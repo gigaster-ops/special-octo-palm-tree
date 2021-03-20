@@ -58,7 +58,7 @@ def ajax_():
     if two:
         file3.save(f'{name3}.jpg')
 
-    return json.dumps({'src': url_for('static', filename=f'{name1}.jpg')})
+    return json.dumps({'src': f'{name1}.jpg'})
 
 
 @app.route('/generate', methods=['POST'])
