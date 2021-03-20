@@ -53,12 +53,12 @@ def ajax_():
         file3 = request.files['file3']
 
     two = weight_style2 != 0 and file3 != 0
-    file1.save(f'{name1}.jpg')
-    file2.save(f'{name2}.jpg')
+    file1.save(f'static/{name1}.jpg')
+    file2.save(f'static/{name2}.jpg')
     if two:
-        file3.save(f'{name3}.jpg')
+        file3.save(f'static/{name3}.jpg')
 
-    return json.dumps({'src': url_for(f'{name1}.jpg')})
+    return json.dumps({'src': url_for('static', filename=f'{name1}.jpg')})
 
 
 @app.route('/generate', methods=['POST'])
