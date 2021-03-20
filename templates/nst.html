@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>style transfer</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/reset.css') }}"/>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}"/>
+	<link rel='icon' href="{{ url_for('static', filename='images/favicon.jpg') }}"/>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+			function post_ajax() {
+	            $.ajax({
+	                type: "POST",
+	                url: "/ajax_parameters",
+	                data: $('ajax_form').serialize(),
+	                success: function(response) {
+	                    var json = jQuery.parseJSON(response)
+	                    console.log(response);
+	                },
+	                error: function(error) {
+	                    console.log(error);
+	                }
+	            });
+        	}
+    </script>
+	<script type="text/javascript">
+		function ConRemove1() {
+            	document.getElementById("1").value = 1;
+        }
+        function ConRemove2() {
+            	document.getElementById("2").value = 1000000;
+        }
+        function ConRemove3() {
+            	document.getElementById("3").value = 600;
+        }
+        function ConRemove4() {
+            	document.getElementById("input_content").src = "https://i.ibb.co/ZVFsg37/default.png";
+            	document.getElementById("input_content").text = "";
+        }
+        function ConRemove5() {
+            	document.getElementById("input_style").src = "https://i.ibb.co/ZVFsg37/default.png";
+            	document.getElementById("input_style").text = "";
+        }
+
+        function showPreviewOne1(event){
+	      if(event.target.files.length > 0){
+	        let src = URL.createObjectURL(event.target.files[0]);
+	        let preview = document.getElementById("input_content");
+	        preview.src = src;
+	        preview.style.display = "block";
+	      } 
+	    }
+	    function showPreviewOne2(event){
+	      if(event.target.files.length > 0){
+	        let src = URL.createObjectURL(event.target.files[0]);
+	        let preview = document.getElementById("input_style");
+	        preview.src = src;
+	        preview.style.display = "block";
+	      } 
+	    }
+	</script>
+</head>
+<body id='body2'>
+	<div class='chead'>
+		<div class='namediv'>
+			<a href="/">
+				<span class='name'> Style&Image</span>
+			</a>
+		</div>
+		<div class='bar_module_left'>
+			<a href="/nst">
+				<span class='bar_text'>NST</span>
+			</a>
+		</div>
+		<div class='bar_module'>
+			<a href="/gen">
+				<span class='bar_text'>Generation</span>
+			</a>
+		</div>
+	</div>
+
+	<div class='choise'>
+		<div class="one_style" align='center'>
+			<a href="/nst">
+				<span class='choise_text'>One style</span>
+			</a>
+		</div>
+		<div class="two_style" align='center'>
+			<a href="/nst2">
+				<span class='choise_text'>Two styles</span>
+			</a>
+		</div>
+	</div>
+
+
+	<div class='content' id='content_id'>
+		<form action="/ajax_parameters" id="form1" method="post" enctype="multipart/form-data">
+			<div class='toolsbar'>
+				<div class='tool'>
+					<label class="form_text" for="weight_content"> Weight content image</label><br>
+			        <input id="1" class="input_field" type="number" min=1 name="weight_content" placeholder="weight_content" value=1>
+			        <button type="button" class="ConRemove" onclick="ConRemove1();"></button>
+			    </div>
+
+			    <div class='tool'>
+			        <label class="form_text" for="weight_style"> Weight style image</label><br>
+			        <input id="2" class="input_field" type="number" min=1 name="weight_style" placeholder="weight_style" value=1000000>
+			        <button type="button" class="ConRemove" onclick="ConRemove2();"></button>
+			    </div>
+
+			    <div class='tool'>
+			        <label class="form_text" for="num_epoch"> Num epoch </label><br>
+			        <input id="3" class="input_field" type="number" min=100 max=800 name="num_epoch" placeholder="num_epoch" value=600>
+			        <button type="button" class="ConRemove" onclick="ConRemove3();"></button>
+			    </div>
+		 			
+		        <input class="submit_form" type="submit" value="Отправить"/>
+		    </div>
+
+	        <div class='image_viewer'>
+	        	<div class='input_content_div'>
+					<img id="input_content" src="https://i.ibb.co/ZVFsg37/default.png">
+					<button type="button" class="ConRemove" onclick="ConRemove4();"></button>
+					<input type="file"  name="file1" id="file1" text="" onchange="showPreviewOne1(event);">
+					<script>
+				            $("#input_content").click(function() {
+							    $("#file1").trigger('click');
+							});
+					</script>
+				</div>
+
+				<div class='input_style_div'>
+					<img id="input_style" src="https://i.ibb.co/ZVFsg37/default.png">
+					<button type="button" class="ConRemove" onclick="ConRemove5();"></button>
+					<input type="file"  name="file2" id="file2" text="" onchange="showPreviewOne2(event);">
+					<script>
+							$("#input_style").on('click', function() {
+							    $("#file2").trigger('click');
+							});
+					</script>
+				</div>
+			</div>
+	    </form>
+	    <div class='result'>
+	    	<span class='result_text'> Result </span>
+	    </div>
+	    <div class='output' align='center'>
+	    	<img id="output_image" src="">
+	    </div>
+
+	    <script>
+	        $(document).ready(function () {
+	            $("#form1" ).submit(function( event ) {
+	              sendAjaxForm("form1");
+	              event.preventDefault();
+	            });
+	        });
+	 
+
+	        function sendAjaxForm(form_ajax) {
+	            var form = new FormData($('#' + form_ajax)[0]);
+	            $.ajax({
+	                type: 'post',
+	                url: '/ajax_parameters',
+	                data: form,
+			        cache: false,
+			        processData: false,
+			        contentType: false,
+			        dataType : 'json',
+	                success: function (response) {
+	                	console.log(response)
+						document.getElementById("output_image").src = response.src;
+						setTimeout(2000);
+	                },
+	                error: function (error) {
+	                    console.log(error);
+	                }
+	            });
+	        }
+	    </script>
+
+		<div class='display'>
+
+		</div>
+	</div>
+</body>
+</html>

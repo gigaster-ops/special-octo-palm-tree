@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>style transfer</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/reset.css') }}"/>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}"/>
+	<link rel='icon' href="{{ url_for('static', filename='images/favicon.jpg') }}"/>
+	<script type="text/javascript">
+	    var images = new Array();
+	    var i = 0;
+
+	    images[0] = "{{ url_for('static', filename='images/angry_man.jpg') }}";
+	    images[1] = "{{ url_for('static', filename='images/apple.jpeg') }}";
+	    images[2] = "{{ url_for('static', filename='images/auto.jpg') }}";
+	    images[3] = "{{ url_for('static', filename='images/giraffe.jpg') }}";
+	    images[4] = "{{ url_for('static', filename='images/dog_cat.jpg') }}";
+	     
+	    function viewImages() {
+	        document.getElementById("image_nst").src = images[i];
+
+	        i++;
+	        if (i == images.length) {
+	            i = 0;
+	        }
+	        setTimeout("viewImages()",2000);
+	    }
+	</script>
+</head>
+<body>
+	<div class='chead'>
+		<div class='namediv'>
+			<a href="/">
+				<span class='name'> Style&Image</span>
+			</a>
+		</div>
+		<div class='bar_module_left'>
+			<a href="/nst">
+				<span class='bar_text'>NST</span>
+			</a>
+		</div>
+		<div class='bar_module'>
+			<a href="/gen">
+				<span class='bar_text'>Generation</span>
+			</a>
+		</div>
+	</div>
+
+	<div class='gen'>
+		<div class='line'>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im1.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im3.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im4.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im5.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im11.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im14.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im17.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im21.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im25.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im32.jpg') }}"></div>
+			<br>
+		</div>
+		<div class='line'>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im35.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im39.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im45.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im46.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im51.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im59.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im66.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im67.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im100.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im105.jpg') }}"></div>
+			<br>
+		</div>
+		<div class='line'>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im70.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im71.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im73.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im74.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im75.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im77.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im80.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im109.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im3.jpg') }}"></div>
+			<div class='imblock'><img class='image_gen' src="{{ url_for('static', filename='images/im82.jpg') }}"></div>
+			<br>
+		</div>
+	</div>
+
+	<div class='nst'>
+		<img id='image_nst' src="">
+	</div>
+	<script> viewImages(); </script>
+
+	<div class='footer'>
+		<div id="info">
+				<p>&#169; 2021 Gigaster</p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>style transfer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/reset.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}"/>
+    <link rel='icon' href="{{ url_for('static', filename='images/favicon.jpg') }}"/>
+</head>
+<body>
+<div class='chead'>
+    <div class='namediv'>
+        <a href="/">
+            <span class='name'> Style&Image</span>
+        </a>
+    </div>
+    <div class='bar_module_left'>
+        <a href="/nst">
+            <span class='bar_text'>NST</span>
+        </a>
+    </div>
+    <div class='bar_module'>
+        <a href="/gen">
+            <span class='bar_text'>Generation</span>
+        </a>
+    </div>
+</div>
+
+<div class='imtable' align="center">
+    <div class='imtable_line'>
+        <div class='imtable_block'>
+            <img class='imtable_img' id="imtable_img1" src="">
+        </div>
+
+        <div class='imtable_block'>
+            <img class='imtable_img' id="imtable_img2" src="">
+        </div>
+
+        <div class='imtable_block'>
+            <img class='imtable_img' id="imtable_img3" src="">
+        </div>
+
+        <div class='imtable_block'>
+            <img class='imtable_img' id="imtable_img4" src="">
+        </div>
+    </div>
+
+    <div class='imtable_line'>
+        <div class='imtable_block'>
+            <img class='imtable_img' id="imtable_img5" src="">
+        </div>
+
+        <div class='imtable_block'>
+            <img class='imtable_img' id="imtable_img6" src="">
+        </div>
+
+        <div class='imtable_block'>
+            <img class='imtable_img' id="imtable_img7" src="">
+        </div>
+
+        <div class='imtable_block'>
+            <img class='imtable_img' id="imtable_img8" src="">
+        </div>
+    </div>
+
+    <div class='imtable_line'>
+        <div class='imtable_block'>
+            <img class='imtable_img' id="imtable_img9" src="">
+        </div>
+
+        <div class='imtable_block'>
+            <img class='imtable_img' id="imtable_img10" src="">
+        </div>
+
+        <div class='imtable_block'>
+            <img class='imtable_img' id="imtable_img11" src="">
+        </div>
+
+        <div class='imtable_block'>
+            <img class='imtable_img' id="imtable_img12" src="">
+        </div>
+    </div>
+
+    <div class='imtable_line'>
+        <div class='imtable_block'>
+            <img class='imtable_img' id="imtable_img13" src="">
+        </div>
+
+        <div class='imtable_block'>
+            <img class='imtable_img' id="imtable_img14" src="">
+        </div>
+
+        <div class='imtable_block'>
+            <img class='imtable_img' id="imtable_img15" src="">
+        </div>
+
+        <div class='imtable_block'>
+            <img class='imtable_img' id="imtable_img16" src="">
+        </div>
+    </div>
+
+</div>
+
+<div class='block_button' align='center'>
+    <div class='button' onclick="buttonClick()">
+        <span class='button_text'>Generate!</span>
+    </div>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+
+
+    <script>
+        function buttonClick(event) {
+            sendAjaxForm();
+        }
+
+        function sendAjaxForm() {
+            $.ajax({
+                type: 'post',
+                url: '/generate',
+                cache: false,
+                processData: false,
+                contentType: false,
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response)
+                    document.getElementById("imtable_img1").src = response.src1;
+                    document.getElementById("imtable_img2").src = response.src2;
+                    document.getElementById("imtable_img3").src = response.src3;
+                    document.getElementById("imtable_img4").src = response.src4;
+                    document.getElementById("imtable_img5").src = response.src5;
+                    document.getElementById("imtable_img6").src = response.src6;
+                    document.getElementById("imtable_img7").src = response.src7;
+                    document.getElementById("imtable_img8").src = response.src8;
+                    document.getElementById("imtable_img9").src = response.src9;
+                    document.getElementById("imtable_img10").src = response.src10;
+                    document.getElementById("imtable_img11").src = response.src11;
+                    document.getElementById("imtable_img12").src = response.src12;
+                    document.getElementById("imtable_img13").src = response.src13;
+                    document.getElementById("imtable_img14").src = response.src14;
+                    document.getElementById("imtable_img15").src = response.src15;
+                    document.getElementById("imtable_img16").src = response.src16;
+
+                    setTimeout(2000);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+</div>
+</body>
+</html>
