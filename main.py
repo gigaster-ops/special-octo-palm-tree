@@ -53,33 +53,33 @@ def ajax_():
         file3 = request.files['file3']
 
     two = weight_style2 != 0 and file3 != 0
-    file1.save(f'static/save_images/{name1}.jpg')
-    file2.save(f'static/save_images/{name2}.jpg')
+    file1.save(f'static\save_images\{name1}.jpg')
+    file2.save(f'static\save_images\{name2}.jpg')
     if two:
-        file3.save(f'static/images/{name3}.jpg')
+        file3.save(f'static\images\{name3}.jpg')
 
-    return json.dumps({'src': url_for('static', filename=f'save_images/{name1}.jpg')})
+    return json.dumps({'src': url_for('static', filename=f'save_images\{name1}.jpg')})
 
 
 @app.route('/generate', methods=['POST'])
 def generate():
     print('generate!')
-    return json.dumps({'src1': url_for('static', filename=f'images/im1.jpg'),
-                       'src2': url_for('static', filename=f'images/im1.jpg'),
-                       'src3': url_for('static', filename=f'images/im1.jpg'),
-                       'src4': url_for('static', filename=f'images/im1.jpg'),
-                       'src5': url_for('static', filename=f'images/im1.jpg'),
-                       'src6': url_for('static', filename=f'images/im1.jpg'),
-                       'src7': url_for('static', filename=f'images/im1.jpg'),
-                       'src8': url_for('static', filename=f'images/im1.jpg'),
-                       'src9': url_for('static', filename=f'images/im1.jpg'),
-                       'src10': url_for('static', filename=f'images/im1.jpg'),
-                       'src11': url_for('static', filename=f'images/im1.jpg'),
-                       'src12': url_for('static', filename=f'images/im1.jpg'),
-                       'src13': url_for('static', filename=f'images/im1.jpg'),
-                       'src14': url_for('static', filename=f'images/im1.jpg'),
-                       'src15': url_for('static', filename=f'images/im1.jpg'),
-                       'src16': url_for('static', filename=f'images/im1.jpg'),})
+    return json.dumps({'src1': url_for('static', filename=f'images\im1.jpg'),
+                       'src2': url_for('static', filename=f'images\im1.jpg'),
+                       'src3': url_for('static', filename=f'images\im1.jpg'),
+                       'src4': url_for('static', filename=f'images\im1.jpg'),
+                       'src5': url_for('static', filename=f'images\im1.jpg'),
+                       'src6': url_for('static', filename=f'images\im1.jpg'),
+                       'src7': url_for('static', filename=f'images\im1.jpg'),
+                       'src8': url_for('static', filename=f'images\im1.jpg'),
+                       'src9': url_for('static', filename=f'images\im1.jpg'),
+                       'src10': url_for('static', filename=f'images\im1.jpg'),
+                       'src11': url_for('static', filename=f'images\im1.jpg'),
+                       'src12': url_for('static', filename=f'images\im1.jpg'),
+                       'src13': url_for('static', filename=f'images\im1.jpg'),
+                       'src14': url_for('static', filename=f'images\im1.jpg'),
+                       'src15': url_for('static', filename=f'images\im1.jpg'),
+                       'src16': url_for('static', filename=f'images\im1.jpg'),})
 
 
 if __name__ == '__main__':
