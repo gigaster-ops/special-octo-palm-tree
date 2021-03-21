@@ -33,7 +33,7 @@ a {
 .name {
 	color: white;
 	font-size: 40px;
-	font-family: cursive;
+	font-family: Comic Sans MS;
 
 }
 
@@ -75,7 +75,7 @@ a {
 .bar_text {
 	color: white;
 	font-size: 25px;
-	font-family: cursive;
+	font-family: Comic Sans MS;
 }
 
 
@@ -118,7 +118,7 @@ a {
 #info {
 	font-size: 15px;
 	color: white;
-	font-family: cursive;
+	font-family: Comic Sans MS;
 	text-align: center;
 }
 
@@ -143,7 +143,7 @@ a {
 .form_text {
 	font-size: 20px;
 	color: white;
-	font-family: cursive;
+	font-family: Comic Sans MS;
 	text-align: center;
 
 }
@@ -161,7 +161,7 @@ a {
 	border: 2px solid white;
 	font-size: 20px;
 	color: white;
-	font-family: cursive;
+	font-family: Comic Sans MS;
 	text-align: center;
 	margin-bottom: 5px;
 }
@@ -294,7 +294,7 @@ a {
 	width: 100%;
 	font-size: 30px;
 	color: white;
-	font-family: cursive;
+	font-family: Comic Sans MS;
 	text-align: center;
 }
 
@@ -321,7 +321,7 @@ a {
 	text-align: center;
 	font-size: 30px;
 	color: white;
-	font-family: cursive;
+	font-family: Comic Sans MS;
 }
 
 
@@ -342,7 +342,7 @@ a {
 	text-align: center;
 	font-size: 30px;
 	color: white;
-	font-family: cursive;
+	font-family: Comic Sans MS;
 }
 
 .imtable {
