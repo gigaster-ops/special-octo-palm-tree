@@ -1,9 +1,11 @@
 from flask import Flask, render_template, url_for, redirect, request, make_response, jsonify, json
 import secrets
-from flasgger import Swagger
+from nst import *
+from PIL import Image
+import numpy as np
+import matplotlib.pyplot as plt
 
 app = Flask(__name__)
-swagger = Swagger(app)
 
 
 @app.route('/')
@@ -39,13 +41,13 @@ def ajax_():
     print(request.files)
     weight_style2 = 0
     file3 = 0
-    weight_style = request.form['weight_style']
+    weight_style = int(request.form['weight_style'])
     if 'weight_style2' in request.form:
-        weight_style2 = request.form['weight_style2']
-    weight_content = request.form['weight_content']
-    num_epoch = request.form['num_epoch']
+        weight_style2 = int(request.form['weight_style2'])
+    weight_content = int(request.form['weight_content'])
+    num_epoch = int(request.form['num_epoch'])
 
-    name1, name2, name3 = get_names(3)
+    name1, name2, name3, name4 = get_names(4)
 
     file1 = request.files['file1']
     file2 = request.files['file2']
@@ -55,10 +57,19 @@ def ajax_():
     two = weight_style2 != 0 and file3 != 0
     file1.save(f'static/{name1}.jpg')
     file2.save(f'static/{name2}.jpg')
+
+    img1 = image_loader(f'static/{name1}.jpg')
+    img2 = image_loader(f'static/{name2}.jpg')
+    img3 = None
     if two:
         file3.save(f'static/{name3}.jpg')
+        img3 = image_loader(f'static/{name3}.jpg')
+    output = style_transfer_cpu(img1, img2, img3, weight_style, weight_style2, weight_content, num_epoch)
+    output_np = np.transpose(output.detach().numpy()[0], (1, 2, 0))
+    print(output_np)
+    plt.imsave(f"static/{name4}.jpg", output_np)
 
-    return json.dumps({'src': url_for('static', filename=f'{name1}.jpg')})
+    return json.dumps({'src': url_for('static', filename=f'{name4}.jpg')})
 
 
 @app.route('/generate', methods=['POST'])
