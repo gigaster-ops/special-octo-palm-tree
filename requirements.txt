@@ -1,3 +1,4 @@
+-f https://download.pytorch.org/whl/torch_stable.html
 arrow==1.0.3
 attrs==20.3.0
 binaryornot==0.4.4
@@ -30,3 +31,6 @@ typing-extensions==3.7.4.3
 urllib3==1.26.4
 Werkzeug==1.0.1
 zipp==3.4.1
+Pillow=8.1.2
+torch==1.7.0+cpu
+torchvision==0.8.0+cpu
